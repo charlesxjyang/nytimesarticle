@@ -64,9 +64,9 @@ class articleAPI(object):
         def _format_fq(d):
             for k,v in d.items():
                 if isinstance(v, list):
-                    d[k] = ' '.join(map(lambda x: '"' + x + '"', v))
+                    d[k] = ' '.join(map(lambda x: '"' + x.decode("utf-8") + '"', v))
                 else:
-                    d[k] = '"' + v + '"'
+                    d[k] = '"' + v.decode("utf-8") + '"'
             values = []
             for k,v in d.items():
                 value = '%s:(%s)' % (k,v)
